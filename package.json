@@ -1,0 +1,14 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "tsx web-server.ts"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2"
+  }
+}
