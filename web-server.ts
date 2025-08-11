@@ -4,8 +4,13 @@ import http from "http";
 
 const PORT = process.env.PORT || 3001;
 
-const server = http.createServer();
+// const server = http.createServer();
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "text/plain" });
+  res.end("OK");
+});
 const wss = new WebSocketServer({ server });
+
 
 wss.on("connection", (socket) => {
   console.log("New client connected");
@@ -13,8 +18,7 @@ wss.on("connection", (socket) => {
   socket.on("message", (message) => {
     console.log("Received:", message.toString());
 
-    // Echo back
-    socket.send(`Server received: ${message}`);
+    socket.send(message.toString());
   });
 
   socket.on("close", () => {
